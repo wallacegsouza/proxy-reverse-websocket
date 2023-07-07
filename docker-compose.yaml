@@ -1,8 +1,16 @@
 version: '3'
 services:
-  web:
-    build: .
-    ports:
-      - '7007:7007'
+  api:
+    build: ./backend
     volumes:
-      - .:/code
+      - ./backend:/code
+
+  front:
+    build: ./frontend
+    volumes:
+      - ./frontend:/frontend
+
+  proxy:
+    build: ./proxy
+    ports:
+      - '8080:80'

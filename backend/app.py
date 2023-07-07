@@ -10,7 +10,7 @@ app.config["CORS_HEADERS"] = "Content-Type"
 app.config['JSON_SORT_KEYS'] = False
 
 
-@app.route('/')
+@app.route('/api')
 def home():
     return jsonify({"Message":"This is your flask app with docker"})
 
