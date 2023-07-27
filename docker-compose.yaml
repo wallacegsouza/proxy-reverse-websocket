@@ -2,15 +2,20 @@ version: '3'
 services:
   api:
     build: ./backend
+    ports:
+      - '7007:7007'
+      - '5000:5000'
     volumes:
       - ./backend:/code
 
   front:
     build: ./frontend
     volumes:
-      - ./frontend:/frontend
+      - ./frontend:/home/static
 
   proxy:
     build: ./proxy
+    volumes:
+      - ./proxy:/etc/nginx/conf.d
     ports:
       - '8080:80'
