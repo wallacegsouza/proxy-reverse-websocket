@@ -2,19 +2,27 @@ version: '3'
 services:
   api:
     build: ./backend
-    ports:
-      - '7007:7007'
-      - '5000:5000'
+    container_name: api
     volumes:
       - ./backend:/code
 
-  front:
+  websocket:
+    build: ./websocket
+    container_name: websocket
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./websocket:/code
+
+  frontend:
     build: ./frontend
+    container_name: frontend
     volumes:
       - ./frontend:/home/static
 
   proxy:
     build: ./proxy
+    container_name: proxy
     volumes:
       - ./proxy:/etc/nginx/conf.d
     ports:
