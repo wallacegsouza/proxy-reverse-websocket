@@ -10,7 +10,7 @@ services:
     build: ./websocket
     container_name: websocket
     ports:
-      - '5000:5000'
+      - '8000:8000'
     volumes:
       - ./websocket:/code
 
